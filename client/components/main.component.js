@@ -10,6 +10,9 @@ export default class MainComponent extends Component{
 
     componentDidMount(){
         this.props.FetchTradeDetails();
+        this.props.FetchCommodities();
+        this.props.FetchCounterparty();
+        this.props.FetchLocations();
     }
 
     render(){ 
@@ -32,7 +35,7 @@ export default class MainComponent extends Component{
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8"><TradeList {...this.props}/></div>
-                        <div className="col-md-3 offset-md-1">{React.cloneElement(this.props.children, this.props)}</div>
+                        <div className="col-md-4">{React.cloneElement(this.props.children, this.props)}</div>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,9 @@ export default class TradeDetailsComponent extends Component{
                   <td>{this.props.trade.counterParty.name}</td>
                   <td>{this.props.trade.location.cityname}</td>
                   <td><span className="glyphicon glyphicon-trash" onClick={this.props.DeleteTrade.bind(this,this.props.index,this.props.trade.id)}></span></td>
+                  <td><Link to="/home/view/{id}" ><button type="button" class="btn btn-info">Info</button></Link></td>
                 </tr>
+
           )
     }
 }

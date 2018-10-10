@@ -9,7 +9,7 @@ class LiveFeed extends Component {
     }
 
     componentDidMount(){
-        let aPromise = axios.get('http://localhost:8080/marketdata/fetchCommodities');
+        let aPromise = axios.get('http://localhost:8081/api/marketdata/fetchCommodities');
         aPromise.then(
             (response)=>{
                 this.setState({marketData:response.data})

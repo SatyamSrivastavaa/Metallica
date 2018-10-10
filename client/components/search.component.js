@@ -4,7 +4,6 @@ import { searchTrade, FetchTradeDetails } from '../actions/actions'
 
 class SearchComponent extends Component{
     searchTrade(){
-        // const method = "POST";
         var buyOrSell = () => {
             if((document.getElementById("buy").checked == true)  && (document.getElementById("sell").checked == true)){
                 return null;
@@ -95,4 +94,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect()(SearchComponent);
+export default connect(null, mapDispatchToProps)(SearchComponent);

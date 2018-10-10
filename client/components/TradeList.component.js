@@ -28,9 +28,7 @@ export default class TradeList extends Component{
               <tbody>
                 {this.props.myTrades.map(
                     (tradeDetails, i)=>{
-                        return (
-                                <TradeDetails trade={tradeDetails} key={tradeDetails.id} index={i} {...this.props} />
-                        )
+                        return <TradeDetails trade={tradeDetails} key={tradeDetails.id} index={i} {...this.props} />
                     }
                 )}
               </tbody>

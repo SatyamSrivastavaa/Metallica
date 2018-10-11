@@ -9,7 +9,7 @@ export default class TradeList extends Component {
     // }
 
     render() {
-        console.log("hello" + this.props.myTrades);
+        //console.log("hello" + this.props.myTrades);
 
         return <div>
             <div className="container-fluid">
@@ -28,11 +28,16 @@ export default class TradeList extends Component {
                     <tbody>
                         {this.props.myTrades.map(
                             (tradeDetails, i) => {
-                                return <TradeDetails trade={tradeDetails} key={tradeDetails.id} index={i} {...this.props} />
+                                return <TradeDetails trade={tradeDetails} key={tradeDetails.tradeId} index={i} {...this.props} />
                             }
                         )}
                     </tbody>
                 </table>
+                <Link to="/home/">
+                    <button type="button" className="btn btn-info btn-md">
+                        <span className="glyphicon glyphicon-plus-sign"></span>&nbsp;Add
+                    </button>
+                </Link>
             </div>
         </div>
     }

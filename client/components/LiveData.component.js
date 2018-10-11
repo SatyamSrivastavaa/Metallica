@@ -3,18 +3,26 @@ import axios from 'axios';
 import '../styles/livedata.css'
 
 class LiveFeed extends Component {
-
+    constructor(){
+        super();
+        this.fetchMD = this.fetchMD.bind(this);
+    }
     componentWillMount(){
         this.setState({marketData:[]});
     }
 
     componentDidMount(){
-        let aPromise = axios.get('http://localhost:8081/api/marketdata/fetchCommodities');
-        aPromise.then(
-            (response)=>{
-                this.setState({marketData:response.data})
-            }
-        )
+        this.fetchMD();
+        setInterval(this.fetchMD, 30000);
+    }
+
+    fetchMD(){
+        let self = this;
+        axios.get('http://localhost:8081/api/marketdata/fetchCommodities')
+        .then((response) => {
+            //console.log(response.data)
+            self.setState({marketData:response.data})
+        });
     }
 
     render(){

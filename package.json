@@ -1,6 +1,6 @@
 {
-  "name": "learn-redux",
-  "version": "1.0.0",
+  "name": "Metallica",
+  "version": "9.9.9",
   "description": ":) ",
   "scripts": {
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
@@ -51,8 +51,7 @@
     "redux": "^3.5.2",
     "redux-thunk": "^2.3.0",
     "rimraf": "^2.5.2",
-    "sockjs-client": "^1.1.2",
-    "stomp": "^0.1.1",
+    "sockjs-client": "^1.2.0",
     "stompjs": "^2.3.3",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
@@ -64,6 +63,7 @@
   "devDependencies": {
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
+    "json-loader": "^0.5.7",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.0.2"
   }

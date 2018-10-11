@@ -1,19 +1,29 @@
 import axios from 'axios';
 
-export function FetchTradeDetails() {
+export function FetchTradeDetails(response) {
     // var request= axios.get('https://api.myjson.com/bins/xujuk');
-    var request = axios.get('http://localhost:8081/api/trades/find/all');
+    if (typeof response === 'undefined') {
+        var request = axios.get('http://localhost:8081/api/trades/find/all');
+
+        return (dispatch) => {
+            request.then(
+                (response) => {
+                    dispatch({
+                        type: 'FETCH_TRADE_DETAILS',
+                        response: response.data
+                    })
+                }
+            );
+        }
+    }
+
 
     return (dispatch) => {
-        request.then(
-            (response) => {
-                dispatch({
-                    type: 'FETCH_TRADE_DETAILS',
-                    response: response.data
-                })
-            }
-        );
-    }
+        dispatch({
+            type: 'FETCH_TRADE_DETAILS',
+            response: response.data
+        });
+    };
 }
 
 export function FetchCommodities() {
@@ -88,22 +98,7 @@ export function DeleteTrade(index, id) {
     })
 
     return {
-        type: 'DELETE_TRADE',
+        type: 'FETCH_TRADE_DETAILS',
         index: index
-    }
-}
-
-export const searchTrade = (searchCriteria) => {
-
-    return (dispatch, getState) => {
-        fetch('http://localhost:8081/api/trade/search', {
-            method: POST,
-            body: searchCriteria
-        })
-            .then(res => dispatch({
-                type: 'FETCH_TRADE_DETAILS',
-                response: res.data
-            }))
-            .console.log(this.state);
     }
 };

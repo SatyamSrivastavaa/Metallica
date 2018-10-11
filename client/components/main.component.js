@@ -1,10 +1,8 @@
 import React ,{Component} from 'react';
-import {Link} from 'react-router';
 import SearchComponent from './search.component';
 import TradeList from './tradeList.component';
-import ViewOrder from './viewOrder.component';
-import CreateOrder from './createOrder.component';
 import LiveData from './LiveData.component.js';
+import Notification from './Notification';
 
 export default class MainComponent extends Component{
 
@@ -18,6 +16,7 @@ export default class MainComponent extends Component{
     render(){ 
         return (
             <div>
+            <Notification/>
                 <div className="topnav">
                     <a href="#home" className="active">TRADES</a>
                     <a href="#news">TRANSFERS</a>
@@ -27,15 +26,16 @@ export default class MainComponent extends Component{
                     <div className="userContent"></div>
                     </div>
                 </div>
-                <div>
+                <div className="liveData">
                     <LiveData />
                 </div>
-
-                <SearchComponent />
+                <br/>
+                <SearchComponent {...this.props} />
+                <br/>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-8"><TradeList {...this.props}/></div>
-                        <div className="col-md-4">{React.cloneElement(this.props.children, this.props)}</div>
+                        <div className="col-md-8 border"><TradeList {...this.props}/></div>
+                        <div className="col-md-4 border">{React.cloneElement(this.props.children, this.props)}</div>
                     </div>
                 </div>
             </div>

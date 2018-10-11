@@ -7,7 +7,7 @@ class DropDown extends Component {
 
     render() {
         return (
-            <a onClick={this.selectData.bind(this)} className="dropdown-item" href="#">{this.props.name}</a>
+            <option onClick={this.selectData.bind(this)} className="dropdown-item" href="#">{this.props.name}</option>
         )
     }
 }

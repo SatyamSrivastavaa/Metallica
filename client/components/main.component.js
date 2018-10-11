@@ -18,13 +18,13 @@ export default class MainComponent extends Component{
     render(){ 
         return (
             <div>
-                <div class="topnav">
-                    <a href="#home" class="active">TRADES</a>
+                <div className="topnav">
+                    <a href="#home" className="active">TRADES</a>
                     <a href="#news">TRANSFERS</a>
                     <a href="#contact">TRANSPORTS</a>
                     {/* <!-- HTML for displaying user details --> */}
-                    <div class="topnav-right">
-                    <div class="userContent"></div>
+                    <div className="topnav-right">
+                    <div className="userContent"></div>
                     </div>
                 </div>
                 <div>

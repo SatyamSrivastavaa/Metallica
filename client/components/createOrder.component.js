@@ -75,24 +75,17 @@ export default class CreateOrder extends Component {
                     <div className="form-group row">
                         <label for="tdate" className="col-sm-2 col-form-label" style={{ paddingTop: "8px" }}>Trade Date</label>
                         <div className="col-sm-2">
-                            <input type="date" className="form-control" id="tdate" />
+                            <input type="text" ref="date" value={date()} className="form-control" id="tdate" />
                         </div>
                     </div>
                     <br />
                     <div className="row">
                         <label className="control-group col-sm-2" for="symbol" style={{ paddingTop: "8px" }}>Commodity: </label>
                         <div className="col-sm-2">
-                            <div className="input-group">
-                                <div className="dropdown">
-                                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {this.state.comm}
-                                    </button>
-                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        {comms}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <select>
+                            {comms}
+                        </select>
+                    </div>
                     </div>
                     <br />
 
@@ -111,18 +104,10 @@ export default class CreateOrder extends Component {
                     <div className="row">
                         <label className="control-group col-sm-2" for="party" style={{ paddingTop: "8px" }}>Counterparty: </label>
                         <div className="col-sm-2">
-                        <div className="input-group">
-                        <div className="dropdown">
-                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {this.state.cp}
-                            </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                {cpList}
-                            </div>
-                        </div>
+                        <select>
+                            {cpList}
+                        </select>
                     </div>
-
-                        </div>
                     </div>
                     <br />
                     <div className="form-group row">
@@ -144,16 +129,9 @@ export default class CreateOrder extends Component {
                     <div className="row">
                         <label className="control-group col-sm-2" for="location" style={{ paddingTop: "8px" }}>Location: </label>
                         <div className="col-sm-2">
-                        <div className="input-group">
-                        <div className="dropdown">
-                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {this.state.loc}
-                            </button>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <select>
                                 {locList}
-                            </div>
-                        </div>
-                    </div>
+                            </select>
                         </div>
                     </div>
                     <br />

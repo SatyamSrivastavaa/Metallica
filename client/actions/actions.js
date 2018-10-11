@@ -81,12 +81,11 @@ export function FetchCounterparty() {
 }
 
 export function DeleteTrade(index, id) {
-    fetch('http://localhost:8081:api/trades/delete?id=' + id, {
+    fetch('http://localhost:8081/api/trades/delete?id=' + id, {
         method: 'delete'
+    }).then(dispatch => {
+        dispatch(this.props.FetchTradeDetails());
     })
-        .then(res => {
-            console.log(res.status);
-        });
 
     return {
         type: 'DELETE_TRADE',

@@ -26,8 +26,11 @@ export default class Notification extends Component {
     let stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
       stompClient.subscribe('/metallica', function (e) {
+        //console.log(e.body)
+        let trade = JSON.parse(e.body);
         self.setState({
           data: !self.state.data,
+          message: "New Trade Created: " + trade.tradeId + " with " + trade.counterParty + " for " + trade.commodity
         })
         //alert('New Trade Created')
         self.showToast();
@@ -55,7 +58,7 @@ export default class Notification extends Component {
     }, () => {
       setTimeout(() =>
         this.setState({ showToast: false })
-        , 2000)
+        , 4000)
     })
   }
 }

@@ -75,6 +75,8 @@
     }
   </style>
   <script>
+    var x = document.cookie;
+    
     function renderButton() {
       gapi.signin2.render('gSignIn', {
         'scope': 'profile email',
@@ -87,30 +89,47 @@
       });
     }
     function onSuccess(googleUser) {
+      console.log("x " + x)
       var profile = googleUser.getBasicProfile();
       gapi.client.load('plus', 'v1', function () {
         var request = gapi.client.plus.people.get({
           'userId': 'me'
         });
+        
         // Display user details
         request.execute(function (resp) {
-          console.log(resp)
+          //console.log(resp)
+          
           var profileHTML = '! <a href="javascript:void(0);" onClick="signOut();">Sign out</a></div>';
           profileHTML += '<img src="' + resp.image.url + '"/><div class="proDetails"><p>' + resp.displayName + '</p><p>' + '</p><p><a href="' + resp.url + '">View Google+ Profile</a></p></div></div>';
           $('.userContent').html(profileHTML);
           $('#gSignIn').slideUp('slow');
+          
         });
       });
+      if(x == "G_AUTHUSER_H=0"){
+        document.cookie="lol; expires = Thu, 01 Jan 1970 00:00:00 UTC; path=/"
+        this.moveWindows();
+      }
+      
     }
+
+    function moveWindows() {
+      window.location = "	http://localhost:7770/home";
+    }
+
     function onFailure(error) {
       alert(error);
     }
     function signOut() {
+
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
         $('.userContent').html('');
         $('#gSignIn').slideDown('slow');
       });
+      signin = false;
+      window.location = "	http://localhost:7770";
     }
     function myFunction() {
       var x = document.getElementById("myTopnav");
@@ -126,7 +145,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- HTML for render Google Sign-In button -->
-  <div id="gSignIn"></div>
+  <div id="gSignIn"
+  data-onsuccess="onSignIn"></div>
 </head>
 
 <body>
